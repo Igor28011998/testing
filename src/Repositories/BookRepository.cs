@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using CRUD.Models;
@@ -15,10 +16,12 @@ namespace CRUD.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task Create(Book book)
+        public async Task<Book> Create(Book book)
         {
             _dbContext.Add(book);
             await _dbContext.SaveChangesAsync();
+
+            return book;
         }
 
         public Task Update(Book book)
@@ -31,9 +34,9 @@ namespace CRUD.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Book> Get(Guid id)
+        public Task<Book> Get(Expression<Func<Book, bool>> expression)
         {
-            return _dbContext.Set<Book>().FirstOrDefaultAsync(x => x.Id == id);
+            return _dbContext.Set<Book>().FirstOrDefaultAsync(expression);
         }
     }
 }

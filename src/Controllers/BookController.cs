@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CRUD.Models;
 using Microsoft.AspNetCore.Mvc;
 using CRUD.Services.Abstracts;
 
@@ -22,6 +23,14 @@ namespace CRUD.Controllers
             var book = await _bookService.Get(id);
 
             return Ok(book);
+        }
+        
+        [HttpPost("")]
+        public async Task<IActionResult> Create(Book book)
+        {
+            var created = await _bookService.Create(book);
+
+            return Ok(created);
         }
     }
 }

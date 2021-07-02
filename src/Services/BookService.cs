@@ -15,13 +15,9 @@ namespace CRUD.Services
             _repository = repository;
         }
 
-        public Task Create(Book book)
+        public Task<Book> Create(Book book)
         {
             book.Id = Guid.NewGuid();
-            if (book.Name.Contains("Pablo"))
-            {
-                throw new Exception("Sosi hui");
-            }
 
             return _repository.Create(book);
         }
@@ -38,7 +34,7 @@ namespace CRUD.Services
 
         public Task<Book> Get(Guid id)
         {
-            throw new NotImplementedException();
+            return _repository.Get(x => x.Id == id);
         }
     }
 }
