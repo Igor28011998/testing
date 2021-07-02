@@ -260,4 +260,3 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-/Aiforfit.DS.Backend/Aiforfit.DS.Backend.Host.WebApi/Properties/launchSettings.json
