@@ -7,8 +7,8 @@ namespace CRUD.Services.Abstracts
     public interface IBookService
     {
         Task<Book> Create(Book book);
-        Task Update(Book book);
-        Task Remove(Guid id);
+        Task<Book> Update(Book book);
+        Task<Book> Remove(Guid id);
         Task<Book> Get(Guid id);
     }
 }

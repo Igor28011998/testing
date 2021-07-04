@@ -22,14 +22,14 @@ namespace CRUD.Services
             return _repository.Create(book);
         }
 
-        public Task Update(Book book)
+        public Task<Book> Update(Book book)
         {
-            throw new NotImplementedException();
+            return _repository.Update(book);
         }
 
-        public Task Remove(Guid id)
+        public Task<Book> Remove(Guid id)
         {
-            throw new NotImplementedException();
+            return _repository.Remove(id);
         }
 
         public Task<Book> Get(Guid id)
