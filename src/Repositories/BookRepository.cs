@@ -24,14 +24,24 @@ namespace CRUD.Repositories
             return book;
         }
 
-        public Task Update(Book book)
+        public async Task<Book> Update(Book book)
         {
-            throw new NotImplementedException();
+            _dbContext.Entry(book).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+            return book;
         }
 
-        public Task Remove(Guid id)
+        public async Task<Book> Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var book = await _dbContext.Set<Book>().FindAsync(id);
+            if (book ==null)
+            {
+                return book;
+            }
+            _dbContext.Set<Book>().Remove(book);
+            await _dbContext.SaveChangesAsync();
+
+            return book;
         }
 
         public Task<Book> Get(Expression<Func<Book, bool>> expression)
